@@ -14,10 +14,11 @@ import java.util.Queue;
  *
  * 45 points: Define a class named Graph to represent a graph, in a fashion 
  * conducive to breadth-first searching.
- Private Data fields will be: n, an int for the number of vertices in the graph.
- * edges, a 2D boolean array of size n-by-n, to store an adjacency matrix.
- * vertices, a length-n array of Vertex, to store information about each vertex.
- * queue, a LinkedList<Vertex> to be used only for queue operations.
+ Private Data fields will be:
+  "n", an int for the number of vertices in the graph.
+ * "edges", a 2D boolean array of size n-by-n, to store an adjacency matrix.
+ * "vertices", a length-n array of Vertex, to store information about each vertex.
+ * "queue", a LinkedList<Vertex> to be used only for queue operations.
  * (The LinkedList class conveniently implements the Queue Java Interface.)
  You'll want to make a public getter method for n.  You'll also want a public
  * getter method for a Vertex, with a parameter index i indicating the Vertex
@@ -46,24 +47,27 @@ public class Graph {
 
     public Graph(boolean [][] edges) {
         this.n = edges.length;
-        this.edges = Arrays.copyOf(edges, n);
+
         for (int i = 0; i < n; i++) {
             vertices[i] = new Vertex(i);
         }
         //this.vertices = Arrays.copyOf(vertices, n);
+        //this.edges = Arrays.copyOf(edges, n);
         queue = new LinkedList<Vertex>();
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                this.edges[i][j] = edges[i][j];
+            }
+        }
     }
+
 
     public int getN() {
         return n;
     }
 
-    public void setN(int n) {
-        this.n = n;
-    }
-
-    public Vertex[] getVertices() {
-        return vertices;
+    public Vertex getVertex(int i) {
+        return vertices[i];
     }
 
 
