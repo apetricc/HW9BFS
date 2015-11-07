@@ -43,6 +43,15 @@ public class breadthFirstSearch {
 
         while(Q.size() != 0) {
             Vertex u = Q.getFirst();
+            u.setColor(Vertex.BLACK);
+            for(int i = 0; i < G.getN();i++) {
+                if(G.getVertex(i+1).getColor() == Vertex.WHITE) {
+                    G.getVertex(i+1).setColor(Vertex.GRAY);
+                    G.getVertex(i+1).setDistance(G.getVertex(i).getDistance() + 1);
+                    G.getVertex(i+1).setParent(G.getVertex(i));
+                    Q.add(G.getVertex(i+1));
+                }
+            }
         }
 
 
