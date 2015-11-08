@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package hw9bfs;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -28,8 +34,11 @@ BFS(G, s) // G is the graph, s is the source vertex in G
              ENQUEUE(Q, v) // put v in the queue of vertices to visit later
 
  */
-public class breadthFirstSearch {
-    public breadthFirstSearch(Graph G, Vertex s) throws Exception{
+public class BreadthFirstSearch {
+    public BreadthFirstSearch(int sourceLabel, Graph G) throws Exception{
+        Vertex s = new Vertex(sourceLabel);
+        //for (type variable: Collection)
+        //for (Vertex u: G.getVertex(sourceLabel))
         for (int i = 0; i < G.getN(); i++) {
             G.getVertex(i).setColor(Vertex.WHITE);
             G.getVertex(i).setDistance(Vertex.INFINITY);
@@ -42,7 +51,7 @@ public class breadthFirstSearch {
         Q.add(s);
 
         while(Q.size() != 0) {
-            Vertex u = Q.getFirst();
+            Vertex u = Q.remove();
             u.setColor(Vertex.BLACK);
             for(int i = 0; i < G.getN();i++) {
                 if(G.getVertex(i+1).getColor() == Vertex.WHITE) {
@@ -58,3 +67,11 @@ public class breadthFirstSearch {
     }
 
 }
+/*
+ Define a breadthFirstSearch class method, to perform a breadth-first
+ * search. The only parameter sourceLabel is a number between 0 and n-1,
+ * the label of the source vertex. You will want to create a local Vertex
+ * handle s, set to element sourceLabel of your Vertex array, right away.
+ * You will also want to use the Queue Java interface methods offer (that's your
+ * ENQUEUE), poll (that's your DEQUEUE), and peek, on your queue.
+*/
