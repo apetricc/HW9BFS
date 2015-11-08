@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-//package hw9bfs;
+package hw9bfs;
 
 import java.util.Arrays;
 import java.util.LinkedList;
