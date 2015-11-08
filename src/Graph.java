@@ -69,8 +69,82 @@ public class Graph {
     public Vertex getVertex(int i) {
         return vertices[i];
     }
+    public void printGraph() {
+        System.out.println("The graph has " + getN() + " vertices.");     
+        for (int i = 0; i < getN(); i++) {
+            for (int j = 0; j < getN(); j++) {
+                System.out.println(edges[i][j]);
+            }
+        }
+    }
+
+    /*
+    /*
+ Define a breadthFirstSearch class method, to perform a breadth-first
+ * search. The only parameter sourceLabel is a number between 0 and n-1,
+ * the label of the source vertex. You will want to create a local Vertex
+ * handle s, set to element sourceLabel of your Vertex array, right away.
+ * You will also want to use the Queue Java interface methods offer (that's your
+ * ENQUEUE), poll (that's your DEQUEUE), and peek, on your queue.
+*/
+    
+    /*
+BFS(G, s) // G is the graph, s is the source vertex in G
+    for (each vertex u in G except for s)
+       u.color = WHITE
+       u.d = ∞ // infinite distance, for now. replaced later with a real distance
+       u.p = NULL
+    s.color = GRAY
+    s.d = 0 // s is distance 0 from itself
+    s.p = NULL // s is the root of the breadth-first tree
+    let Q be a new and empty queue
+    ENQUEUE(Q, s) // put vertex s into the queue: the first vertex to be visited
 
 
+    while (Q is not empty)
+       u = DEQUEUE(Q) // remove a vertex u to visit, from Q
+       u.color = BLACK
+       for (each vertex v adjacent to u)
+          if v.color == WHITE // gray or black neighbors are left alone
+             v.color = GRAY
+             v.d = u.d + 1 // v (the child of u) is 1 farther from s than u
+             v.p = u // v is added to the breadth-first tree as a child of u
+             ENQUEUE(Q, v) // put v in the queue of vertices to visit later
+
+ */
+    
+    
+    
+        public void breadthFirstSearch(int sourceLabel) throws Exception{
+        Vertex s = new Vertex(sourceLabel);
+        //for (type variable: Collection)
+        //for (Vertex u: G.getVertex(sourceLabel))
+        for (int i = 0; i < getN(); i++) {
+            getVertex(i).setColor(Vertex.WHITE);
+            getVertex(i).setDistance(Vertex.INFINITY);
+            getVertex(i).setParent(null);
+        }
+        s.setColor(Vertex.GRAY);
+        s.setDistance(0);
+        s.setParent(null);
+        Queue<Vertex> Q = new LinkedList<Vertex>();
+        Q.offer(s);
+
+        while(Q.size() != 0) {
+            Vertex u = queue.poll();//Q.remove();
+            u.setColor(Vertex.BLACK);
+            for(int i = 0; i < getN();i++) {
+                if(getVertex(i+1).getColor() == Vertex.WHITE) {
+                    getVertex(i+1).setColor(Vertex.GRAY);
+                    getVertex(i+1).setDistance(getVertex(i).getDistance() + 1);
+                    getVertex(i+1).setParent(getVertex(i));
+                    Q.add(getVertex(i+1));
+                }
+            }
+        }
+
+
+    }
 
 
 }
