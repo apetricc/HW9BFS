@@ -1,7 +1,7 @@
 /*
  * Header comment goes here.
  */
-package hw9bfs;
+
 
 public class HW9BFS {
 
@@ -19,14 +19,15 @@ correctly.)
     
     */
     
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) throws Exception {
+        /*
         int[] arr = {1,2,3,4,5,6,7,8,9,10};
-        for(int i : arr) {
-            System.out.println("The loop worked to print out the item which is the number:  " + i + " ");
+        for(int item : arr) {
+            System.out.println("The loop worked to print out the item which is the number:  " + item + " ");
         }
+        */
         
-        boolean [][] myArray = new boolean[][] {
+        boolean [][] myArray1 = {
         {false, true, false, false, false},
         {false, false, true, false, true},
         {false, true, false, true, true},
@@ -34,14 +35,55 @@ correctly.)
         {false, true, true, false, false}
         };
         
-        Graph myGraph = new Graph(myArray);
-        
-        
-        myGraph.getN();
-        
-        
-        
-        
+        Graph Graph1 = new Graph(myArray1);
+
+        boolean [][] myArray2 = {
+                {false, true, true, true, false, false},
+                {true, false, false, false, false, false},
+                {true, false, false, false, true, false},
+                {false, false, true, true, false, true},
+                {false, false, false, false, true, false},
+        };
+
+        Graph Graph2 = new Graph(myArray2);
+
+        boolean [][] myArray3 = {
+                {false, false, false, false, false},
+                {false, false, false, false, false},
+                {false, false, false, false, false},
+                {false, false, false, false, false},
+                {false, false, false, false, false},
+        };
+
+        Graph Graph3 = new Graph(myArray2);
+
+
+
+        //actual testing part
+        System.out.println("Here are the vertices of Graph1 before the search. ");
+        Graph1.printVertices();
+        System.out.println("\nHere's the adjacency matrix of Graph1: ");
+        Graph1.printGraph();
+        Graph1.breadthFirstSearch(0);
+        System.out.println("\nHere are the vertices of Graph1 after the breadth first search: ");
+        Graph1.printVertices();
+
+        System.out.println("\nHere are the vertices of Graph2 before the search. ");
+        Graph2.printVertices();
+        System.out.println("\nHere's the adjacency matrix of Graph2: ");
+        Graph2.printGraph();
+        Graph2.breadthFirstSearch(0);
+        System.out.println("\nHere are the vertices of Graph2 after the breadth first search: ");
+        Graph2.printVertices();
+
+        System.out.println("\nHere are the vertices of Graph3 before the search. ");
+        Graph3.printVertices();
+        System.out.println("\nHere's the adjacency matrix of Graph3: ");
+        Graph3.printGraph();
+        Graph3.breadthFirstSearch(0);
+        System.out.println("\nHere are the vertices of Graph3 after the breadth first search: ");
+        Graph3.printVertices();
+
     }
 
 }
