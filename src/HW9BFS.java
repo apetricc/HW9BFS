@@ -1,8 +1,9 @@
 /*
- * Header comment goes here.
+ * Andrew Petriccione
+   CSCI 333 Professor Whitley
  */
 
-
+package hw9bfs;
 public class HW9BFS {
 
     /*
@@ -39,23 +40,27 @@ correctly.)
 
         boolean [][] myArray2 = {
                 {false, true, true, true, false, false},
-                {true, false, false, false, false, false},
                 {true, false, false, false, true, false},
-                {false, false, true, true, false, true},
-                {false, false, false, false, true, false},
+                {true, false, false, false, false, true},
+                {true, false, false, false, false, true},
+                {false, true, false, false, false, true},
+                {false, true, true, true, false, false}
         };
 
         Graph Graph2 = new Graph(myArray2);
-
+        
         boolean [][] myArray3 = {
-                {false, false, false, false, false},
-                {false, false, false, false, false},
-                {false, false, false, false, false},
-                {false, false, false, false, false},
-                {false, false, false, false, false},
+                {false, true, false, false, false, false, false, false},
+                {true, false, true, true, false, false, false, false},
+                {false, true, false, true, true, false, true, false},
+                {false, true, true, false, true, false, false, false},
+                {false, false, true, true, false, true, false, false},
+                {false, false, false, false, true, false, true, true},
+                {false, false, true, false, false, true, false, false},
+                {false, false, false, false, false, true, false, false},
         };
 
-        Graph Graph3 = new Graph(myArray2);
+        Graph Graph3 = new Graph(myArray3);
 
 
 
@@ -74,8 +79,8 @@ correctly.)
         Graph2.printGraph();
         Graph2.breadthFirstSearch(0);
         System.out.println("\nHere are the vertices of Graph2 after the breadth first search: ");
-        Graph2.printVertices();
-
+        Graph2.printVertices();        
+        
         System.out.println("\nHere are the vertices of Graph3 before the search. ");
         Graph3.printVertices();
         System.out.println("\nHere's the adjacency matrix of Graph3: ");
