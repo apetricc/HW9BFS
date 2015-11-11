@@ -1,11 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * Andrew Petriccione
+ * Csci 333 Fall 2015
+ * Professor Whitley
+ * Homework 9: Breadth First Search
+ * The point of this assignment is to implement Graph class
+ * that we can perform a breadth first search on.
  */
 //package hw9bfs;
-
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -33,6 +34,12 @@ import java.util.Queue;
  * away. You will also want to use the Queue Java interface methods offer
  * (that's your ENQUEUE), poll (that's your DEQUEUE), and peek, on your queue.
  */
+
+/**
+ * The Graph class creates an undirected graph from an adjacency matrix
+ * and has methods to get the number of vertices, retrieve a given vertex,
+ * print the graph, and perform a breadth first search of the graph.
+ */
 public class Graph {
 
     private int n;
@@ -40,6 +47,11 @@ public class Graph {
     private Vertex[] vertices;
     private Queue<Vertex> queue;
 
+    /**
+     * The constructor for a new Graph uses a queue for the vertices,
+     * and a boolean 2D array for the edges.
+     * @param edges the adjacency matrix of the graph
+     */
     public Graph(boolean[][] edges) {
         this.n = edges.length;
         queue = new LinkedList<Vertex>();
@@ -53,20 +65,30 @@ public class Graph {
         for (int i = 0; i < n; i++) {
             vertices[i] = new Vertex(i);
         }
-        //this.vertices = Arrays.copyOf(vertices, n);
-        //this.edges = Arrays.copyOf(edges, n);
-
     }//Graph constructor
 
+    /**
+     * The getN method returns the number of vertices, n.
+     * @return the number of vertices
+     */
     public int getN() {
         return n;
     }
 
+    /**
+     * getVertex returns the vertex with the key given
+     * @param i the key of the vertex to return
+     * @return the vertex with the key requested
+     */
     public Vertex getVertex(int i) {
         return vertices[i];
     }
 
-
+    /**
+     * printGraph prints the number of vertices
+     * then prints the boolean adjacency matrix using 1 for true
+     * and 0 for false.
+     */
     public void printGraph() {
         System.out.println("The graph has " + n + " vertices.");
         for (int i = 0; i < n; i++) {
@@ -81,44 +103,21 @@ public class Graph {
         }
     }
 
+    /**
+     * printVertices prints all the Vertex objects and their contents
+     * in the graph it is called upon.
+     */
     public void printVertices() {
         for (int i = 0; i < n; i++) {
             System.out.println("Here is vertex " + i + " " + getVertex(i));
         }
     }
-
-    /*
-     /*
-     Define a breadthFirstSearch class method, to perform a breadth-first
-     * search. The only parameter sourceLabel is a number between 0 and n-1,
-     * the label of the source vertex. You will want to create a local Vertex
-     * handle s, set to element sourceLabel of your Vertex array, right away.
-     * You will also want to use the Queue Java interface methods offer (that's your
-     * ENQUEUE), poll (that's your DEQUEUE), and peek, on your queue.
-     */
-    /*
-     BFS(G, s) // G is the graph, s is the source vertex in G
-     for (each vertex u in G except for s)
-        u.color = WHITE
-        u.d = ∞ // infinite distance, for now. replaced later with a real distance
-        u.p = NULL
-     s.color = GRAY
-     s.d = 0 // s is distance 0 from itself
-     s.p = NULL // s is the root of the breadth-first tree
-     let Q be a new and empty queue
-     ENQUEUE(Q, s) // put vertex s into the queue: the first vertex to be visited
-
-
-     while (Q is not empty)
-        u = DEQUEUE(Q) // remove a vertex u to visit, from Q
-        u.color = BLACK
-        for (each vertex v adjacent to u)
-            if v.color == WHITE // gray or black neighbors are left alone
-                v.color = GRAY
-                v.d = u.d + 1 // v (the child of u) is 1 farther from s than u
-                v.p = u // v is added to the breadth-first tree as a child of u
-                ENQUEUE(Q, v) // put v in the queue of vertices to visit later
-
+    /**
+     * breadthFirstSearch performs a breadth first search of the graph
+     * it is called upon, updating the Vertex objects in the graph as
+     * it goes.
+     * @param sourceLabel the label of the vertex to use as the source of the search
+     * @throws Exception in the case of a non-existent vertex, exception is thrown
      */
     public void breadthFirstSearch(int sourceLabel) throws Exception {
         Vertex s = null;

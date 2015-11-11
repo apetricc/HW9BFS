@@ -1,32 +1,22 @@
-/*
+/**
  * Andrew Petriccione
-   CSCI 333 Professor Whitley
+ * Csci 333 Fall 2015
+ * Professor Whitley
+ * Homework 9: Breadth First Search
+ * The point of this assignment is to implement Graph class
+ * that we can perform a breadth first search on.
  */
+//package hw9bfs;
 
-package hw9bfs;
+/**
+ * the HW9BFS class contains the main method to run tests on the Graph class
+ */
 public class HW9BFS {
-
-    /*
-    15 points: In main, test your Graph class and perform breadth­first search. 
-○ Manually initialize at least three boolean 2D arrays of the adjacency 
-matrices of a few different graphs, each fully connected with at least 5 
-vertices. You may want to draw them on paper first, then write down the 
-adjacency matrices. 
-○ With each matrix, construct a Graph object, and perform a breadth­first 
-search. Afterward, you'll want to printGraph and also print out all the 
-vertices.  (By reading all the parent labels in the Vertex print statements, 
-you could draw the breadth­first tree on paper to make sure it's working 
-correctly.) 
-    
-    */
+    /**
+     * main runs tests on the graph class
+     */
     
     public static void main(String[] args) throws Exception {
-        /*
-        int[] arr = {1,2,3,4,5,6,7,8,9,10};
-        for(int item : arr) {
-            System.out.println("The loop worked to print out the item which is the number:  " + item + " ");
-        }
-        */
         
         boolean [][] myArray1 = {
         {false, true, false, false, false},
@@ -62,9 +52,6 @@ correctly.)
 
         Graph Graph3 = new Graph(myArray3);
 
-
-
-        //actual testing part
         System.out.println("Here are the vertices of Graph1 before the search. ");
         Graph1.printVertices();
         System.out.println("\nHere's the adjacency matrix of Graph1: ");
